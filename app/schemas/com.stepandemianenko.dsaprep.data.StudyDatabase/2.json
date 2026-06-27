@@ -1,0 +1,295 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "6c6bed783803e4c46aed675382398889",
+    "entities": [
+      {
+        "tableName": "study_tasks",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `title` TEXT NOT NULL, `category` TEXT NOT NULL, `date` TEXT NOT NULL, `isCompleted` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "category",
+            "columnName": "category",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isCompleted",
+            "columnName": "isCompleted",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "daily_check_ins",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` TEXT NOT NULL, `energyLevel` TEXT NOT NULL, `focusLevel` TEXT NOT NULL, `note` TEXT, `completedAtLeastOneTask` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "energyLevel",
+            "columnName": "energyLevel",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "focusLevel",
+            "columnName": "focusLevel",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "note",
+            "columnName": "note",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "completedAtLeastOneTask",
+            "columnName": "completedAtLeastOneTask",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_daily_check_ins_date",
+            "unique": true,
+            "columnNames": [
+              "date"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_daily_check_ins_date` ON `${TABLE_NAME}` (`date`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "problem_sessions",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `problemTitle` TEXT NOT NULL, `problemLink` TEXT, `difficulty` TEXT NOT NULL, `topic` TEXT NOT NULL, `startedAtEpochMillis` INTEGER NOT NULL, `finishedAtEpochMillis` INTEGER, `durationSeconds` INTEGER NOT NULL, `goalMinutes` INTEGER NOT NULL, `solvedStatus` TEXT NOT NULL, `timeComplexity` TEXT, `spaceComplexity` TEXT, `mainApproach` TEXT, `mistakeOrBlocker` TEXT, `confidence` INTEGER NOT NULL, `reviewPattern` TEXT, `reviewKeyInsight` TEXT, `reviewMistake` TEXT, `reviewRewriteStatus` TEXT, `reviewFinalTakeaway` TEXT, `dateIso` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "problemTitle",
+            "columnName": "problemTitle",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "problemLink",
+            "columnName": "problemLink",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "difficulty",
+            "columnName": "difficulty",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "topic",
+            "columnName": "topic",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startedAtEpochMillis",
+            "columnName": "startedAtEpochMillis",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "finishedAtEpochMillis",
+            "columnName": "finishedAtEpochMillis",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "durationSeconds",
+            "columnName": "durationSeconds",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "goalMinutes",
+            "columnName": "goalMinutes",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "solvedStatus",
+            "columnName": "solvedStatus",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timeComplexity",
+            "columnName": "timeComplexity",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "spaceComplexity",
+            "columnName": "spaceComplexity",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mainApproach",
+            "columnName": "mainApproach",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "mistakeOrBlocker",
+            "columnName": "mistakeOrBlocker",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "confidence",
+            "columnName": "confidence",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "reviewPattern",
+            "columnName": "reviewPattern",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "reviewKeyInsight",
+            "columnName": "reviewKeyInsight",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "reviewMistake",
+            "columnName": "reviewMistake",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "reviewRewriteStatus",
+            "columnName": "reviewRewriteStatus",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "reviewFinalTakeaway",
+            "columnName": "reviewFinalTakeaway",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "dateIso",
+            "columnName": "dateIso",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_problem_sessions_dateIso",
+            "unique": false,
+            "columnNames": [
+              "dateIso"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_problem_sessions_dateIso` ON `${TABLE_NAME}` (`dateIso`)"
+          },
+          {
+            "name": "index_problem_sessions_topic",
+            "unique": false,
+            "columnNames": [
+              "topic"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_problem_sessions_topic` ON `${TABLE_NAME}` (`topic`)"
+          },
+          {
+            "name": "index_problem_sessions_difficulty",
+            "unique": false,
+            "columnNames": [
+              "difficulty"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_problem_sessions_difficulty` ON `${TABLE_NAME}` (`difficulty`)"
+          },
+          {
+            "name": "index_problem_sessions_startedAtEpochMillis",
+            "unique": false,
+            "columnNames": [
+              "startedAtEpochMillis"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_problem_sessions_startedAtEpochMillis` ON `${TABLE_NAME}` (`startedAtEpochMillis`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6c6bed783803e4c46aed675382398889')"
+    ]
+  }
+}
